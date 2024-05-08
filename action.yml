@@ -16,6 +16,10 @@ inputs:
     required: false
     default: "false"
   skipComments:
-    description: Do not look for checklists in comments
+    description: Do not look for checklists in the comments
+    required: false
+    default: "false"
+  skipDescription:
+    description: Do not look for checklists in pull request's description
     required: false
     default: "false"
