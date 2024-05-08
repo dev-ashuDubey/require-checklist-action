@@ -21,10 +21,12 @@ async function action() {
     return;
   }
 
-  const { data: issue } = await octokit.rest.issues.get({
-    ...github.context.repo,
-    issue_number: issueNumber,
-  });
+  if (core.getInput("skipDescription") != "true") {
+    const { data: issue } = await octokit.rest.issues.get({
+      ...github.context.repo,
+      issue_number: issueNumber,
+    });
+  }
 
   if (issue.body) {
     bodyList.push(issue.body);
