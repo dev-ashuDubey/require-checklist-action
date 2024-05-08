@@ -26,12 +26,11 @@ async function action() {
       ...github.context.repo,
       issue_number: issueNumber,
     });
+    
+    if (issue.body) {
+      bodyList.push(issue.body);
+    }
   }
-
-  if (issue.body) {
-    bodyList.push(issue.body);
-  }
-
   if (core.getInput("skipComments") != "true") {
     const { data: comments } = await octokit.rest.issues.listComments({
       ...github.context.repo,
